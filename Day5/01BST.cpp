@@ -3,7 +3,7 @@ using namespace std;
 
 class node{
     public:
-    int data
+    int data;
     node* left;
     node* right;
 
@@ -15,7 +15,7 @@ class node{
 
 node* insert(node* root, int data) {
     if(root==NULL) {
-        return new Node(data);
+        return new node(data);
     }
 
     if(data < root->data) {
@@ -32,7 +32,7 @@ bool search(node* root, int key) {
         return true;
     }
     else if(root->data > key) {
-        return search(root->left, root->right);
+        return search(root->left, key);
     }
     else{
         return search(root->right, key);
@@ -40,19 +40,19 @@ bool search(node* root, int key) {
 }
 
 
-void printInOrder(Node* root) {
+void printInOrder(node* root) {
     if(root == NULL) {
         return;
     }
     printInOrder(root->left);
-    cout << root->key << ",";
+    cout << root->data << ",";
     printInOrder(root->right);
 }
 
 
 int main(){
 
-	Node * root = NULL;
+	node * root = NULL;
 	int arr[] = {8,3,10,1,6,14,4,7,13};
 
 	for(int x : arr){
